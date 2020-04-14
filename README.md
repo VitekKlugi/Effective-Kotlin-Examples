@@ -2,7 +2,7 @@
 
 ## Good Code
 ### Safety - Item 1 - 10
-#### Item 1 - limit mutability
+#### Item 1: limit mutability
 * Mutation point
     * potential conflict - [MutableVarInCoroutine.kt](src/goodcode/safety/item1/MutableVarInCoroutine.kt)
 * Read Only Property
@@ -15,7 +15,15 @@
 * Do not leak mutation points
     * a defensive copy for standard objects
     * for collections upcast to readonly interfaces
-
+#### Item 2: Minimize the scope of variables
+* Use local variables instead of properties
+* Use variables in the narrowest scope possible
+    * Destructuring declarations can help - [DestructuringDeclarationHelpNarrowTheScope.kt](src/goodcode/safety/item2/DestructuringDeclarationHelpNarrowTheScope.kt)
+    * Capturing - [PrimeNumbers.kt](src/goodcode/safety/item2/PrimeNumbers.kt)
+        * Sieve of Eratosthenes
+#### Item 3: Eliminate platform types as soon as possible
+* Platform type - a type that comes from another language and has unknown nullability
+* Platform vs. stated type
 ### Readability - Item 11 - 18
 
 ## Code Design
