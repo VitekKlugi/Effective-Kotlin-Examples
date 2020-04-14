@@ -23,7 +23,9 @@
         * Sieve of Eratosthenes
 #### Item 3: Eliminate platform types as soon as possible
 * Platform type - a type that comes from another language and has unknown nullability
-* Platform vs. stated type
+* Platform vs. stated type - [PlatformVsStatedType.kt](src/goodcode/safety/item3/PlatformVsStatedType.kt)
+#### Item 4: Do not expose inferred types
+* inferred type exposition can be really dangerous - 
 ### Readability - Item 11 - 18
 
 ## Code Design
