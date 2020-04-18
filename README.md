@@ -25,7 +25,9 @@
 * Platform type - a type that comes from another language and has unknown nullability
 * Platform vs. stated type - [PlatformVsStatedType.kt](src/goodcode/safety/item3/PlatformVsStatedType.kt)
 #### Item 4: Do not expose inferred types
-* inferred type exposition can be really dangerous - 
+* inferred type exposition can be really dangerous - [DangerousInferredTypeExposion.kt](src/goodcode/safety/item4/DangerousInferredTypeExposion.kt)
+#### Item 5: Specify your expectations on arguments and state
+
 ### Readability - Item 11 - 18
 
 ## Code Design
