@@ -8,7 +8,7 @@ private val primes: Sequence<Int> = sequence {
         prime = numbers.first()
         yield(prime)
         numbers = numbers
-//            .also { println("${it.take(8).toList()}, prime = $prime") }
+            .also { println("${it.take(8).toList()}, prime = $prime") }
             .drop(1)
             .filter { it % prime != 0 }
     }

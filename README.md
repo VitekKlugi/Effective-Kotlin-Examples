@@ -27,6 +27,30 @@
 #### Item 4: Do not expose inferred types
 * inferred type exposition can be really dangerous - [DangerousInferredTypeExposion.kt](src/goodcode/safety/item4/DangerousInferredTypeExposion.kt)
 #### Item 5: Specify your expectations on arguments and state
+* require block - a universal way to specify expectations on arguments.
+    * lazy message
+    * smart cast - contract
+* check block - a universal way to specify expectations on the state.
+* assert block - a universal way to check if something is true. Such checks on the JVM will be evaluated only on the testing mode.
+* Elvis operator with return or throw - popular for null check
+    * [ElvisReturn.kt](src/goodcode/safety/item5/ElvisReturn.kt)
+#### Item 6: Prefer standard errors to custom ones
+* IllegalArgumentException and IllegalStateException - expectations on arguments and state
+* IndexOutOfBoundsException
+* ConcurrentModificationException
+* UnsupportedOperationException
+* UnsupportedOperationException
+    * should be avoided - Interface Segregation Principle
+        * no client should be forced to depend on methods it does not use
+* NoSuchElementException
+#### Item 7: Prefer null or Failure result when the lack of result is possible
+* we should prefer returning null or Failure when an error is expected
+    * Failure - 
+* throwing an exception when an error is not expected
+    * The way exceptions propagate is less readable for most programmers and might be easily missed in the code.
+    * In Kotlin all exceptions are unchecked. Users are not forced or even encouraged to handle them. They are often not well documented. They are not really visible when we use an API.
+    * Because exceptions are designed for exceptional circumstances, there is little incentive for JVM implementers to make them as fast as explicit tests.
+    * Placing code inside a try-catch block inhibits certain optimizations that compiler might otherwise perform.
 
 ### Readability - Item 11 - 18
 
