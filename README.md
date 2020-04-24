@@ -46,6 +46,7 @@
 #### Item 7: Prefer null or Failure result when the lack of result is possible
 * we should prefer returning null or Failure when an error is expected
     * Result as a sealed class - [ReturnFailure.kt](src/goodcode/safety/item7/ReturnFailure.kt)
+        * Mistake in the book, page 68!
     * getOrNull - as an example in stdlib - [GetOrNull.kt](src/goodcode/safety/item7/GetOrNull.kt)
 * throwing an exception when an error is not expected
     * The way exceptions propagate is less readable for most programmers and might be easily missed in the code.
@@ -53,9 +54,21 @@
     * Because exceptions are designed for exceptional circumstances, there is little incentive for JVM implementers to make them as fast as explicit tests.
     * Placing code inside a try-catch block inhibits certain optimizations that compiler might otherwise perform.
 ### Item 8: Handle nulls properly
+* null - lack of value
 * Handling nulls safely
-    * 
-
+    * safe call
+    * smart casting
+    * elvis - default, return, throw [SafeCallAndElvis.kt](src/goodcode/safety/item8/SafeCallAndElvis.kt)
+    * various objects has additional support - [IsNullOrEmpty.kt](src/goodcode/safety/item8/IsNullOrEmpty.kt)
+        * all those options should be known to Kotlin developers
+* Throw an error
+    * the problems with the not-null assertion !! - we should avoid using the not-null assertion !!
+    * Nobody can predict how code will evolve in the future, and if you use not-null assertion !! or explicit error throw, you should assume that it will throw an error one day
+* Avoiding meaningless nullability
+    * Classes can provide variants of functions where the result is expected and in which lack of value is considered and nullable result or a sealed result class is returned.
+    * Use lateinit property or notNull delegate when a value is surely set before use but later than during class creation
+    * Do not return null instead of an empty collection.
+    * Nullable enum and None enum value are two different messages.
 ### Readability - Item 11 - 18
 
 ## Code Design
