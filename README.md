@@ -45,12 +45,16 @@
 * NoSuchElementException
 #### Item 7: Prefer null or Failure result when the lack of result is possible
 * we should prefer returning null or Failure when an error is expected
-    * Failure - 
+    * Result as a sealed class - [ReturnFailure.kt](src/goodcode/safety/item7/ReturnFailure.kt)
+    * getOrNull - as an example in stdlib - [GetOrNull.kt](src/goodcode/safety/item7/GetOrNull.kt)
 * throwing an exception when an error is not expected
     * The way exceptions propagate is less readable for most programmers and might be easily missed in the code.
     * In Kotlin all exceptions are unchecked. Users are not forced or even encouraged to handle them. They are often not well documented. They are not really visible when we use an API.
     * Because exceptions are designed for exceptional circumstances, there is little incentive for JVM implementers to make them as fast as explicit tests.
     * Placing code inside a try-catch block inhibits certain optimizations that compiler might otherwise perform.
+### Item 8: Handle nulls properly
+* Handling nulls safely
+    * 
 
 ### Readability - Item 11 - 18
 
