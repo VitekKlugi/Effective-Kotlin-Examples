@@ -1,4 +1,4 @@
-# Effective Kotlin - poznámky, příklady a pokusy
+# Effective Kotlin - examples
 
 ## Good Code
 ### Safety - Item 1 - 10
@@ -46,7 +46,7 @@
 #### Item 7: Prefer null or Failure result when the lack of result is possible
 * we should prefer returning null or Failure when an error is expected
     * Result as a sealed class - [ReturnFailure.kt](src/goodcode/safety/item7/ReturnFailure.kt)
-        * Mistake in the book, page 68!
+        * Mistake in the book, page 68! [Item7Mistake](Item7Mistake.md)
     * getOrNull - as an example in stdlib - [GetOrNull.kt](src/goodcode/safety/item7/GetOrNull.kt)
 * throwing an exception when an error is not expected
     * The way exceptions propagate is less readable for most programmers and might be easily missed in the code.
@@ -70,6 +70,27 @@
     * Do not return null instead of an empty collection.
     * Nullable enum and None enum value are two different messages.
 ### Readability - Item 11 - 18
+Common misconception is that Kotlin is designed to be concise. It isn't!
+
+Conway’s “Game of Life” in J:
+```
+life=:[:+/(3 4=/[:+/(,/,"0/~i:1)|.])*.1,:]
+```
+Kotlin is designed to be **readable**:
+* eliminates lot of noise
+* boilerplate code
+* repetitive structures
+
+Can be easily misused!
+
+#### Item 11: Design for readability
+* Programming is mostly about reading, not writing.
+* Reducing Cognitive Load
+    * [CognitiveLoad.kt](src/goodcode/readability/item11/CognitiveLoad.kt) - which impl is better?
+    * [CognitiveLoadModified.kt](src/goodcode/readability/item11/CognitiveLoadModified.kt) - add progress
+    * Let is popular idiom - use it wisely 
+* Do not get extreme
+    * [WorstThingInKotlin.kt](src/goodcode/readability/item11/WorstThingInKotlin.kt)
 
 ## Code Design
 ### Reusability Item 19 - 25

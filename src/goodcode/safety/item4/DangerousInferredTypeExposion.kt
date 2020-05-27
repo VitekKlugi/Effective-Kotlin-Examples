@@ -7,7 +7,7 @@ class AudiA6: Car
 val DEFULT_CAR: Car = SkodaOctavia()
 
 interface CarFactory {
-    fun produceCar() = DEFULT_CAR
+    fun produceCar()= DEFULT_CAR
 }
 
 class AudiFactory: CarFactory {
