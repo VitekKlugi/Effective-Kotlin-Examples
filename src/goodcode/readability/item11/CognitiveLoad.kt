@@ -9,8 +9,7 @@ class View {
 }
 
 fun main() {
-    val person: Person? =
-        Person()
+    val person: Person? = Person()
     val view = View()
 
     // Implementation A

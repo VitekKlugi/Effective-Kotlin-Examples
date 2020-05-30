@@ -91,6 +91,20 @@ Can be easily misused!
     * Let is popular idiom - use it wisely 
 * Do not get extreme
     * [WorstThingInKotlin.kt](src/goodcode/readability/item11/WorstThingInKotlin.kt)
+#### Item 12: Operator meaning should be consistent with its function name
+* Operator overloading is a powerful feature, and like most powerful features it is dangerous as well!
+* Fatorial [Factorial.kt](src/goodcode/readability/item12/Factorial.kt)
+* Sometimes it is better to use a top-level function instead [Repeat.kt](src/goodcode/readability/item12/Repeat.kt)
+* There is one very important case when it is fine to use operator overloading in a strange way: When we design a Domain Language (DSL):
+```
+body {
+   div {
+        +"Some text"
+    }
+}
+```
+#### Item 13: Avoid returning or operating on Unit?
+
 
 ## Code Design
 ### Reusability Item 19 - 25
