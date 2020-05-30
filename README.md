@@ -53,7 +53,7 @@
     * In Kotlin all exceptions are unchecked. Users are not forced or even encouraged to handle them. They are often not well documented. They are not really visible when we use an API.
     * Because exceptions are designed for exceptional circumstances, there is little incentive for JVM implementers to make them as fast as explicit tests.
     * Placing code inside a try-catch block inhibits certain optimizations that compiler might otherwise perform.
-### Item 8: Handle nulls properly
+#### Item 8: Handle nulls properly
 * null - lack of value
 * Handling nulls safely
     * safe call
@@ -104,7 +104,26 @@ body {
 }
 ```
 #### Item 13: Avoid returning or operating on Unit?
-
+* Unit? has only 2 possible values: Unit or null - isomorphic to Boolean
+* [ReturningUnit](src/goodcode/readability/item13/ReturningUnit.kt
+#### Item 14: Specify the variable type when it is not clear
+* When type is clear it improves readability:
+```
+val num = 10
+val name = "Marcin"
+val ids = listOf(12, 112, 554, 997)
+```
+* Otherwise use type:
+```
+val data = getSomeData()
+```
+```
+val data: UserData = getSomeData()
+```
+* See also Item 3 & Item 4.
+#### Item 15: Consider referencing receivers explicitly
+* [ManyReceivers.kt](src/goodcode/readability/item14/ManyReceivers.kt)
+* @DslMarker - meta-annotation - forces using explicit receivers from the outer scope 
 
 ## Code Design
 ### Reusability Item 19 - 25
