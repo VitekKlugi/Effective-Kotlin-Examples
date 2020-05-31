@@ -122,8 +122,21 @@ val data: UserData = getSomeData()
 ```
 * See also Item 3 & Item 4.
 #### Item 15: Consider referencing receivers explicitly
-* [ManyReceivers.kt](src/goodcode/readability/item14/ManyReceivers.kt)
-* @DslMarker - meta-annotation - forces using explicit receivers from the outer scope 
+* [ManyReceivers.kt](src/goodcode/readability/item15/ManyReceivers.kt)
+* @DslMarker - meta-annotation - forces using explicit receivers from the outer scope
+#### Item 16: Properties should represent state, not behavior
+* Properties represent accessors, not fields
+    * Properties are essentially functions, we can make extension properties as well
+* We should use them only to represent or set state, and no other logic should be involved
+* When we should not use properties:
+    * Operation is computationally expensive or has computational complexity higher than O(1)
+    * It involves business logic (how the application acts) - when we read code, we do not expect that a property might do anything more than simple actions
+    * It is not deterministic - Calling the member twice in succession produces different results.
+    * It is a conversion, such as Int.toDouble() - It is a matter of convention that conversions are a method or an extension function. Using a property would seem like referencing some inner part instead of wrapping the whole object.
+    * Getters should not change property state - We expect that we can use getters freely without worrying about property state modifications.
+* Property describes and sets state, while a function describes behavior
+* [SumProperty.kt](src/goodcode/readability/item16/SumProperty.kt)
+* [IncorrectUser.kt](src/goodcode/readability/item16/IncorrectUser.kt)
 
 ## Code Design
 ### Reusability Item 19 - 25
