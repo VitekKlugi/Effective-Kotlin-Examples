@@ -137,6 +137,12 @@ val data: UserData = getSomeData()
 * Property describes and sets state, while a function describes behavior
 * [SumProperty.kt](src/goodcode/readability/item16/SumProperty.kt)
 * [IncorrectUser.kt](src/goodcode/readability/item16/IncorrectUser.kt)
+#### Item 17: Consider naming arguments
+* Consider named arguments, especially to parameters:
+    * with default arguments,
+    * with the same type as other parameters,
+    * of functional type, if they’re not the last parameter.
+        *  
 
 ## Code Design
 ### Reusability Item 19 - 25
