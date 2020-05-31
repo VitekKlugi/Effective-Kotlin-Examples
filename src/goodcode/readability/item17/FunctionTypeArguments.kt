@@ -7,6 +7,7 @@ fun call(before: () -> Unit = {}, after: () -> Unit = {}) {
 }
 
 fun main() {
-    call({ println("CALL") }) // CALLMiddle
-    call { println("CALL") } // MiddleCALL
+    call({ print("CALL") }) // CALLMiddle
+    println()
+    call { print("CALL") } // MiddleCALL
 }

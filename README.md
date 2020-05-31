@@ -142,7 +142,11 @@ val data: UserData = getSomeData()
     * with default arguments,
     * with the same type as other parameters,
     * of functional type, if they’re not the last parameter.
-        *  
+        * [FunctionTypeArguments.kt](src/goodcode/readability/item17/FunctionTypeArguments.kt)
+#### Item 18: Respect coding conventions 
+* [kotlinlang.or](https://kotlinlang.org/docs/reference/coding-conventions.html)
+* [Linter - https://github.com/pinterest/ktlint](https://github.com/pinterest/ktlint)
+* Classes formating - often violated - [Formatting.kt](src/goodcode/readability/item18/Formatting.kt)
 
 ## Code Design
 ### Reusability Item 19 - 25
