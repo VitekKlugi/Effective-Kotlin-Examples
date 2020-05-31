@@ -105,7 +105,7 @@ body {
 ```
 #### Item 13: Avoid returning or operating on Unit?
 * Unit? has only 2 possible values: Unit or null - isomorphic to Boolean
-* [ReturningUnit](src/goodcode/readability/item13/ReturningUnit.kt
+* [ReturningUnit.kt](src/goodcode/readability/item13/ReturningUnit.kt)
 #### Item 14: Specify the variable type when it is not clear
 * When type is clear it improves readability:
 ```
