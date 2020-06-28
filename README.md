@@ -198,7 +198,7 @@ val value by lazy { createValue() }
 * Kotlin has powerful support for generics that is not well understood, even experienced Kotlin developers have gaps in their knowledge
 * More than one upper bound where clause [GenericsWhere.kt](src/codedesign/item22/GenericsWhere.kt)
 #### Item 23: Avoid shadowing type parameters
-
+* [ShadowingTypeParam.kt](src/codedesign/item23/ShadowingTypeParam.kt)
         
 ### Abstraction desing Item 26 - 32
 ### Object creation Item 33 - 35
