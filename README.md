@@ -195,7 +195,9 @@ val value by lazy { createValue() }
     * [DelegationViaExtensionFun](src/codedesign/item21/DelegationViaExtensionFun.kt)
 #### Item 22: Use generics when implementing common algorithms
 * Generic functions - Functions that accept type arguments (so having type parameters)
-* More than one upper bound []()
+* Kotlin has powerful support for generics that is not well understood, even experienced Kotlin developers have gaps in their knowledge
+* More than one upper bound where clause [GenericsWhere.kt](src/codedesign/item22/GenericsWhere.kt)
+#### Item 23: Avoid shadowing type parameters
         
 ### Abstraction desing Item 26 - 32
 ### Object creation Item 33 - 35
