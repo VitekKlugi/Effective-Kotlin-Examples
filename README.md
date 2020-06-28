@@ -199,6 +199,8 @@ val value by lazy { createValue() }
 * More than one upper bound where clause [GenericsWhere.kt](src/codedesign/item22/GenericsWhere.kt)
 #### Item 23: Avoid shadowing type parameters
 * [ShadowingTypeParam.kt](src/codedesign/item23/ShadowingTypeParam.kt)
+#### Item 24: Consider variance for generic types
+#### Item 25: Reuse between different platforms by extracting common modules
         
 ### Abstraction desing Item 26 - 32
 ### Object creation Item 33 - 35
