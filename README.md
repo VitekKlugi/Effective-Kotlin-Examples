@@ -189,7 +189,13 @@ val value by lazy { createValue() }
         * [Doc](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-delegates/vetoable.html)
     * Delegates.notNull
         * [Doc](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-delegates/not-null.html)
-* 
+* Custom delegate
+    * [PropertyDelegation.kt](src/codedesign/item21/PopertyDelegation.kt)
+* Operator can also be an extension function
+    * [DelegationViaExtensionFun](src/codedesign/item21/DelegationViaExtensionFun.kt)
+#### Item 22: Use generics when implementing common algorithms
+* Generic functions - Functions that accept type arguments (so having type parameters)
+* More than one upper bound []()
         
 ### Abstraction desing Item 26 - 32
 ### Object creation Item 33 - 35
