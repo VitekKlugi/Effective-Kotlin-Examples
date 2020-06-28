@@ -1,6 +1,6 @@
 # Effective Kotlin - examples
-
-## Good Code
+***Disclaimer:*** This repository contains the personal notes and examples I gathered while reading the excellent book Effective Kotlin. It is by no means an extract or copy of the book. I encourage all Kotlin developers to buy and read this book.
+## Part 1: Good Code
 ### Safety - Item 1 - 10
 #### Item 1: limit mutability
 * Mutation point
@@ -148,8 +148,49 @@ val data: UserData = getSomeData()
 * [Linter - https://github.com/pinterest/ktlint](https://github.com/pinterest/ktlint)
 * Classes formating - often violated - [Formatting.kt](src/goodcode/readability/item18/Formatting.kt)
 
-## Code Design
+## Part 2: Code Design
 ### Reusability Item 19 - 25
+#### Item 19: Do not repeat knowledge
+* DRY, WET, Single Source of Truth (SSOT)
+* Knowledge - any piece of intentional information.
+    * It can be stated by code or data.
+    * It can also be stated by lack of code or data, which means that we want to use the default behavior.
+    * Important pieces of knowledge
+        * Logic - How we expect our program to behave and what it should look like.
+            * Changes often
+        * Common algorithms - Implementation of algorithms to achieve the expected behavior.
+            * Changes not so often, are realatively stable
+* Everything changes
+    * The only constant is change
+    * The biggest enemy of changes is knowledge repetition
+        * Be carefull if they only look similar but represent different knowledge
+            * Are they more likely going to change together or separately?
+            * Single Responsibility Principle
+                * there should be no such situations when two actors need to change the same class
+            * ***Extension functions*** in relevant modules can help to separate responsibilities
+#### Item 20: Do not repeat common algorithms
+* Learn the standard library - developers often reimplementing the same algorithms again and again
+    * Example from Open Source project - [SaveCall.kt](src/codedesign/item20/SaveCall.kt)
+* Implementing you own Utils
+    * Most of the time ***extension function*** is really good choice:
+       * Functions do not hold state, and so they are perfect to represent behavior. Especially if it has no side-effects.
+       * Compared to top-level functions, extension functions are better because they are suggested only on objects with concrete types.
+       * Compared to methods on objects, extensions are easier to find among hints since they are suggested on objects. For instance "Text".isEmpty() is easier to find than TextUtils.isEmpty("Text").
+       * When we are calling a method, it is easy to confuse a toplevel function with a method from the class or superclass, and their expected behavior is very different.
+#### Item 21: Use property delegation to extract common property patterns
+* Property Delegation - it gives us a universal way to extract common property behavior.
+```Kotlin
+val value by lazy { createValue() }
+```
+* Kotlin standard library has some property delegates that we should know:
+    * lazy
+    * Delegates.observable
+    * Delegates.vetoable
+        * [Doc](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-delegates/vetoable.html)
+    * Delegates.notNull
+        * [Doc](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-delegates/not-null.html)
+* 
+        
 ### Abstraction desing Item 26 - 32
 ### Object creation Item 33 - 35
 ### Class Design Item 36 - 44
