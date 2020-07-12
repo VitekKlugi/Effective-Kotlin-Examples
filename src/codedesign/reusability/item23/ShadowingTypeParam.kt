@@ -1,4 +1,4 @@
-package codedesign.item23
+package codedesign.reusability.item23
 
 interface Tree
 class Birch : Tree

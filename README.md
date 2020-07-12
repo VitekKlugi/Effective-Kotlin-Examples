@@ -170,7 +170,7 @@ val data: UserData = getSomeData()
             * ***Extension functions*** in relevant modules can help to separate responsibilities
 #### Item 20: Do not repeat common algorithms
 * Learn the standard library - developers often reimplementing the same algorithms again and again
-    * Example from Open Source project - [SaveCall.kt](src/codedesign/item20/SaveCall.kt)
+    * Example from Open Source project - [SaveCall.kt](src/codedesign/reusability/item20/SaveCall.kt)
 * Implementing you own Utils
     * Most of the time ***extension function*** is really good choice:
        * Functions do not hold state, and so they are perfect to represent behavior. Especially if it has no side-effects.
@@ -190,32 +190,32 @@ val value by lazy { createValue() }
     * Delegates.notNull
         * [Doc](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-delegates/not-null.html)
 * Custom delegate
-    * [PropertyDelegation.kt](src/codedesign/item21/PopertyDelegation.kt)
+    * [PropertyDelegation.kt](src/codedesign/reusability/item21/PopertyDelegation.kt)
 * Operator can also be an extension function
-    * [DelegationViaExtensionFun](src/codedesign/item21/DelegationViaExtensionFun.kt)
+    * [DelegationViaExtensionFun](src/codedesign/reusability/item21/DelegationViaExtensionFun.kt)
 #### Item 22: Use generics when implementing common algorithms
 * Generic functions - Functions that accept type arguments (so having type parameters)
 * Kotlin has powerful support for generics that is not well understood, even experienced Kotlin developers have gaps in their knowledge
-* More than one upper bound where clause [GenericsWhere.kt](src/codedesign/item22/GenericsWhere.kt)
+* More than one upper bound where clause [GenericsWhere.kt](src/codedesign/reusability/item22/GenericsWhere.kt)
 #### Item 23: Avoid shadowing type parameters
-* [ShadowingTypeParam.kt](src/codedesign/item23/ShadowingTypeParam.kt)
+* [ShadowingTypeParam.kt](src/codedesign/reusability/item23/ShadowingTypeParam.kt)
 #### Item 24: Consider variance for generic 
 ![](generics.png)
-* Invariance - [Invariance.kt](src/codedesign/item24/Invariance.kt)
-* Covariance - [Covariance.kt](src/codedesign/item24/Covariance.kt)
-* Contravariance - [Contravariance.kt](src/codedesign/item24/Contravariance.kt)
-* Function types -[FunctionTypes.kt](src/codedesign/item24/FunctionTypes.kt)
+* Invariance - [Invariance.kt](src/codedesign/reusability/item24/Invariance.kt)
+* Covariance - [Covariance.kt](src/codedesign/reusability/item24/Covariance.kt)
+* Contravariance - [Contravariance.kt](src/codedesign/reusability/item24/Contravariance.kt)
+* Function types -[FunctionTypes.kt](src/codedesign/reusability/item24/FunctionTypes.kt)
     * all parameter types in Kotlin function types are contravariant - **in**
     * all return types in Kotlin function types are covariant - **out**
 * The safety of variance modifiers
-    * Java flaw (arrays are covariant) - [ArrayFlaw.java](src/codedesign/item24/ArrayFlaw.java)
+    * Java flaw (arrays are covariant) - [ArrayFlaw.java](src/codedesign/reusability/item24/ArrayFlaw.java)
         * in Kotlin Array is **invariant**!
     * Covariant type
-        * [CovarianceSafety.kt](src/codedesign/item24/CovarianceSafety.kt)
+        * [CovarianceSafety.kt](src/codedesign/reusability/item24/CovarianceSafety.kt)
         * Examples
             * List - covariant
             * MutableList - invariant
-            * Response - [Response.kt](src/codedesign/item24/Response.kt)
+            * Response - [Response.kt](src/codedesign/reusability/item24/Response.kt)
 
 #### Item 25: Reuse between different platforms by extracting common modules
         

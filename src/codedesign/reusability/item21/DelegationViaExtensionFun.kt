@@ -1,4 +1,4 @@
-package codedesign.item21
+package codedesign.reusability.item21
 
 fun main() {
     val map: Map<String, Any> = mapOf(

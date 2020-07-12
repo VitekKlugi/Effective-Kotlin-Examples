@@ -1,4 +1,4 @@
-package codedesign.item22
+package codedesign.reusability.item22
 
 fun <T> copyWhenGreater(list: List<T>, threshold: T): List<String>
         where T : CharSequence,

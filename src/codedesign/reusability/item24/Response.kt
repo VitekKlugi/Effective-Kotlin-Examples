@@ -1,4 +1,4 @@
-package codedesign.item24
+package codedesign.reusability.item24
 
 sealed class Response<out R, out E>
 class Success<out R>(val value: R): Response<R, Nothing>()

@@ -1,4 +1,4 @@
-package codedesign.item21
+package codedesign.reusability.item21
 
 import kotlin.reflect.KProperty
 

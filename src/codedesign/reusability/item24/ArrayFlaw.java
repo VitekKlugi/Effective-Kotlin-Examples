@@ -1,4 +1,4 @@
-package codedesign.item24;
+package codedesign.reusability.item24;
 
 public class ArrayFlaw {
     public static void main(String[] args) {

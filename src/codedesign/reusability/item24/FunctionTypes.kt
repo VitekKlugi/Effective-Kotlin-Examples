@@ -1,4 +1,4 @@
-package codedesign.item24
+package codedesign.reusability.item24
 
 fun printProcessedNumber(transition: (Int) -> Any) {
     println(transition(42))

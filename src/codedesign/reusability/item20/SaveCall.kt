@@ -1,4 +1,4 @@
-package codedesign.item20
+package codedesign.reusability.item20
 
 data class Entity(var id: String = "", var category: String = "", var country: String = "", var description: String = "")
 data class Source(var id: String = "", var category: String = "", var country: String = "", var description: String = "")
