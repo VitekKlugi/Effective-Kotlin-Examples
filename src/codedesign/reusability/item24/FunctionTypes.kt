@@ -6,7 +6,7 @@ fun printProcessedNumber(transition: (Int) -> Any) {
 
 fun main() {
     val intToDouble: (Int) -> Number = { it.toDouble() }
-    val numberAsText: (Number) -> Any = { it.toShort() }
+    val numberAsText: (Number) -> String = { it.toString() }
     val identity: (Number) -> Number = { it }
     val numberToInt: (Number) -> Int = { it.toInt() }
     val numberHash: (Any) -> Number = { it.hashCode() }

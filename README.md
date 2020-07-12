@@ -151,7 +151,7 @@ val data: UserData = getSomeData()
 ## Part 2: Code Design
 ### Reusability Item 19 - 25
 #### Item 19: Do not repeat knowledge
-* DRY, WET, Single Source of Truth (SSOT)
+* DRY, WET (Write Everything Twice), Single Source of Truth (SSOT)
 * Knowledge - any piece of intentional information.
     * It can be stated by code or data.
     * It can also be stated by lack of code or data, which means that we want to use the default behavior.
