@@ -4,7 +4,7 @@ class Hound : Dog()
 
 fun takeDog(dog: Dog) {}
 
-class Box<out T> {
+class DogBox<out T> {
     private var value: T? = null // public in position prohibited - remove private
 
     // Illegal in Kotlin
@@ -21,12 +21,12 @@ fun main() {
     takeDog(Puppy())
     takeDog(Hound())
 
-    val puppyBox = Box<Puppy>()
-    val dogBox: Box<Dog> = puppyBox
+    val puppyBox = DogBox<Puppy>()
+    val dogBox: DogBox<Dog> = puppyBox
 //    dogBox.set(Hound()) // But I have a place for a Puppy
 
-    val dogHouse = Box<Dog>()
-    val box: Box<Any> = dogHouse
+    val dogHouse = DogBox<Dog>()
+    val box: DogBox<Any> = dogHouse
 //    box.set("Some string") // But I have a place for a Dog
 //    box.set(42) // But I have a place for a Dog
 }

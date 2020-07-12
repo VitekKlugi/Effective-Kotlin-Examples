@@ -210,14 +210,30 @@ val value by lazy { createValue() }
 * The safety of variance modifiers
     * Java flaw (arrays are covariant) - [ArrayFlaw.java](src/codedesign/reusability/item24/ArrayFlaw.java)
         * in Kotlin Array is **invariant**!
-    * Covariant type
+    * Covariance safety
         * [CovarianceSafety.kt](src/codedesign/reusability/item24/CovarianceSafety.kt)
         * Examples
             * List - covariant
             * MutableList - invariant
             * Response - [Response.kt](src/codedesign/reusability/item24/Response.kt)
-
+    * Contravariance safety
+        * [ContravarianceSafety.kt](src/codedesign/reusability/item24/ContravarianceSafety.kt)
+        * Example - [Continuation](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines.experimental/-continuation/)
+* Variance modifiers positions
+    * [VarianceModifiersPositions.kt](src/codedesign/reusability/item24/VarianceModifiersPositions.kt)
+        * declaration-side - more common
+        * use-side
+            * we use use-site variance when for some reason we cannot provide variance modifiers for all instances, and yet you need it for one variable.
+            * Example MutableList - [UseSidePosition.kt](src/codedesign/reusability/item24/UseSidePosition.kt)
 #### Item 25: Reuse between different platforms by extracting common modules
+* Using Kotlin mulitplatform capabilities, we can implement business logic only once and reuse it between platforms
+    * Examples
+        * Backend in Kotlin/JVM, for instance on Spring or Ktor
+        * Website in Kotlin/JS, for instance in React
+        * Android in Kotlin/JVM, using the Android SDK
+        * iOS Frameworks that can be used from Objective-C or Swift, using Kotlin/Native
+        * Desktop applications in Kotlin/JVM, for instance in TornadoFX
+        * Raspberry Pi, Linux or Mac OS programs in Kotlin/Native
         
 ### Abstraction desing Item 26 - 32
 ### Object creation Item 33 - 35
