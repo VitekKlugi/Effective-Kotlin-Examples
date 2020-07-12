@@ -199,7 +199,24 @@ val value by lazy { createValue() }
 * More than one upper bound where clause [GenericsWhere.kt](src/codedesign/item22/GenericsWhere.kt)
 #### Item 23: Avoid shadowing type parameters
 * [ShadowingTypeParam.kt](src/codedesign/item23/ShadowingTypeParam.kt)
-#### Item 24: Consider variance for generic types
+#### Item 24: Consider variance for generic 
+![](generics.png)
+* Invariance - [Invariance.kt](src/codedesign/item24/Invariance.kt)
+* Covariance - [Covariance.kt](src/codedesign/item24/Covariance.kt)
+* Contravariance - [Contravariance.kt](src/codedesign/item24/Contravariance.kt)
+* Function types -[FunctionTypes.kt](src/codedesign/item24/FunctionTypes.kt)
+    * all parameter types in Kotlin function types are contravariant - **in**
+    * all return types in Kotlin function types are covariant - **out**
+* The safety of variance modifiers
+    * Java flaw (arrays are covariant) - [ArrayFlaw.java](src/codedesign/item24/ArrayFlaw.java)
+        * in Kotlin Array is **invariant**!
+    * Covariant type
+        * [CovarianceSafety.kt](src/codedesign/item24/CovarianceSafety.kt)
+        * Examples
+            * List - covariant
+            * MutableList - invariant
+            * Response - [Response.kt](src/codedesign/item24/Response.kt)
+
 #### Item 25: Reuse between different platforms by extracting common modules
         
 ### Abstraction desing Item 26 - 32
