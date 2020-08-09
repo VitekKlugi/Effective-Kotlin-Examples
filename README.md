@@ -236,6 +236,77 @@ val value by lazy { createValue() }
         * Raspberry Pi, Linux or Mac OS programs in Kotlin/Native
         
 ### Abstraction desing Item 26 - 32
+In programming we do abstraction and composition.
+
+We use abstractions mainly to:
+* Hide complexity
+* Organize our code
+* Give creators the freedom to change
+#### Item 26: Each function should be written in terms of a single level of abstraction
+Basic and not Kotlin specific.
+
+Abstraction layers for example: Application -> Programming Language -> Assembler -> OS
+
+Functions should be small and have a minimal number of responsibilities. If one of them is more
+complex, we should extract intermediary abstractions.
+
+References: Clean Code, Clean Architecture, Code Complete
+#### Item 27: Use abstraction to protect code against changes
+Different kinds of abstractions give us freedom by protecting us from a variety of changes.
+* Constant - constant property with meaningful name
+* Function - simple abstraction - extension methods might help
+* Classes - more powerful abstraction
+    * can hold state
+    * expose many functions
+    * strong coupling
+* Interfaces
+    * implementation is decoupled
+    * when we need to change interface we must change all the implementations
+* Where is the balance?
+    * Absurd example [FizzBuzz](https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition)
+#### Item 28: Specify API stability
+* changes can be really painful for users
+* proper communication between creator and users is achieved via:
+    * version names
+    * documentation
+    * annotations - [Annotations.kt](src/codedesign/abstraction/item28/Annotations.kt)
+#### Item 29: Consider wrapping external API
+* Not Kotlin specific
+* We often wrap potentially unstable external library APIs in our own project.
+* This gives us a lot of freedom and stability:
+    * We are not afraid of API changes because we would only need to change a single usage inside the wrapper.
+    * We can adjust the API to our project style and logic.
+    * We can replace it with a different library in case of some problems with this one.
+    * We can change the behavior of these objects if we need to (of course, do it responsibly).
+* There are also counterarguments to this approach:
+    * We need to define all those wrappers.
+    * Our internal API is internal, and developers need to learn it just for this project.
+    * There are no courses teaching how our internal API works.
+    * We should also not expect answers on Stack Overflow.
+#### Item 30: Minimize elements visibility
+* Elements visibility should be as restrictive as possible.
+    * It is easier to learn and maintain a smaller interface.
+    * When we want to make changes, it is way easier to expose something than to hide something.
+    * A class cannot be responsible for its own state when properties that represent this state can be changed from outside.
+    * It is easier to track how the API changes when they have more restricted visibility.
+#### Item 31: Define contract with documentation
+* When we define an element, especially parts of external API, we should define a **contract**.
+    * We do that through names, documentation, comments, and types.
+        * [KDoc format](https://kotlinlang.org/docs/reference/kotlin-doc.html)
+            * KDoc combines JavaDoc's syntax for block tags (extended to support Kotlin's specific constructs) and Markdown for inline markup.
+            * Kotlin's documentation generation tool is called [Dokka](https://github.com/Kotlin/dokka).
+    * Type hierarchy is an important source of information about an object
+        * **Liskov substitution principle**
+            * If a class promises an expectation, all of its subclasses should guarantee that too.
+* The contract is a kind of agreement, and it works well as long as both sides respect it.
+#### Item 32: Respect abstraction contracts
+* Both contract and visibility are kind of an agreement between developers
+* Technically, everything in a single project can be hacked
+    * e.g. using reflection
+* Contract is like a warranty
+    * when you break the contract, it is your problem when implementation changes and your code stops working
+* If you are forced to break them, **document** this fact well!    
+        
 ### Object creation Item 33 - 35
 ### Class Design Item 36 - 44
 
