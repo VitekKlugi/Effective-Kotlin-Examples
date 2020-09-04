@@ -1,7 +1,7 @@
 package codedesign.reusability.item20
 
-fun saveCallResultRefactored(item: SourceResponse) {
-    val entities = item.sources.map(::sourceToEntity)
+fun saveCallResultRefactored(response: SourceResponse) {
+    val entities = response.sources.map(::sourceToEntity)
     insertSourcesIntoDb(entities)
 }
 

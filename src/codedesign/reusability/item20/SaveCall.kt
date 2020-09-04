@@ -4,9 +4,9 @@ data class Entity(var id: String = "", var category: String = "", var country: S
 data class Source(var id: String = "", var category: String = "", var country: String = "", var description: String = "")
 data class SourceResponse(val sources: List<Source>)
 
-fun saveCallResult(item: SourceResponse) {
+fun saveCallResult(response: SourceResponse) {
     val entities = ArrayList<Entity>()
-    item.sources.forEach { // useless forEach
+    response.sources.forEach { // useless forEach
         val entity = Entity() // Java Bean pattern - obsolete in Kotlin
         entity.id = it.id
         entity.category = it.category
