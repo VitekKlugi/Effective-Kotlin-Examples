@@ -163,11 +163,11 @@ val data: UserData = getSomeData()
 * Everything changes
     * The only constant is change
     * The biggest enemy of changes is knowledge repetition
-        * Be carefull if they only look similar but represent different knowledge
+        * Be carefull **if they only look similar** but represent different knowledge
             * Are they more likely going to change together or separately?
-            * Single Responsibility Principle
+            * ***Single Responsibility Principle***
                 * there should be no such situations when two actors need to change the same class
-            * ***Extension functions*** in relevant modules can help to separate responsibilities
+            * **Extension functions** in relevant modules can help to separate responsibilities
 #### Item 20: Do not repeat common algorithms
 * Learn the standard library - developers often reimplementing the same algorithms again and again
     * Example from Open Source project - [SaveCall.kt](src/codedesign/reusability/item20/SaveCall.kt)
@@ -189,6 +189,7 @@ val value by lazy { createValue() }
         * [Doc](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-delegates/vetoable.html)
     * Delegates.notNull
         * [Doc](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-delegates/not-null.html)
+        * Similar to ```lateinit``` see [notNull delegate vs lateinit](https://discuss.kotlinlang.org/t/notnull-delegate-vs-lateinit/1923)
 * Custom delegate
     * [PropertyDelegation.kt](src/codedesign/reusability/item21/PopertyDelegation.kt)
 * Operator can also be an extension function
@@ -218,7 +219,7 @@ val value by lazy { createValue() }
             * Response - [Response.kt](src/codedesign/reusability/item24/Response.kt)
     * Contravariance safety
         * [ContravarianceSafety.kt](src/codedesign/reusability/item24/ContravarianceSafety.kt)
-        * Example - [Continuation](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines.experimental/-continuation/)
+        * Example - [Continuation](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-continuation/)
 * Variance modifiers positions
     * [VarianceModifiersPositions.kt](src/codedesign/reusability/item24/VarianceModifiersPositions.kt)
         * declaration-side - more common
@@ -308,6 +309,30 @@ Different kinds of abstractions give us freedom by protecting us from a variety 
 * If you are forced to break them, **document** this fact well!    
         
 ### Object creation Item 33 - 35
+### Item 33: Consider factory functions instead of constructors
+Factory functions (alternative to constructors):
+* unlike constructors, functions have names
+* unlike constructors, functions can return an object of any subtype of their return type
+* unlike constructors, functions are not required to create a new object each time they’re invoked
+* factory functions can provide objects that might not yet exist
+    * eg. libraries that are based on annotation processing
+* when we define a factory function outside of an object, we can control its visibility
+    * for instance, we can make a top-level factory function accessible only in the same file or in the same module
+* factory functions can be inline and so their type parameters can be reified
+* factory functions can construct objects which might otherwise be complicated to construct
+* a constructor needs to immediately call a constructor of a superclass or a primary constructor
+
+Factory functions are not a competition to the primary constructor!
+* factory functions are mainly a competition to **secondary** constructors    
+
+Kotlin factory functions:
+1. Companion object factory function
+    * Similar to Named Constructor Idiom (C++)
+    * ```MyLinkedList.of(1, 2)```
+2. Extension factory function
+3. Top-level factory functions
+4. Fake constructors
+5. Methods on a factory classes
 ### Class Design Item 36 - 44
 
 ## Efficiency
