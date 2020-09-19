@@ -318,17 +318,22 @@ Factory functions (alternative to constructors):
     * eg. libraries that are based on annotation processing
 * when we define a factory function outside of an object, we can control its visibility
     * for instance, we can make a top-level factory function accessible only in the same file or in the same module
-* factory functions can be inline and so their type parameters can be reified
+* factory functions can be **inline** and so their type parameters can be **reified**
 * factory functions can construct objects which might otherwise be complicated to construct
 * a constructor needs to immediately call a constructor of a superclass or a primary constructor
 
 Factory functions are not a competition to the primary constructor!
-* factory functions are mainly a competition to **secondary** constructors    
+* factory functions are mainly a competition to **secondary** constructors
+    * [MyLinkedListFactoryFun.kt](src/codedesign/objectcreation/item33/MyLinkedListFactoryFun.kt)  
 
 Kotlin factory functions:
 1. Companion object factory function
     * Similar to Named Constructor Idiom (C++)
     * ```MyLinkedList.of(1, 2)```
+    * name of the function is not really descriptive
+        * should follow conventions that come from Java
+    * in Kotlin works on Interfaces - [CompanionObjectFactoryFun.kt](src/codedesign/objectcreation/item33/CompanionObjectFactoryFun.kt)
+    * companion objects can implement interfaces and extend classes (unlike static methods in Java) - [AnimalFactory.kt](src/codedesign/objectcreation/item33/AnimalFactory.kt)
 2. Extension factory function
 3. Top-level factory functions
 4. Fake constructors
