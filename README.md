@@ -335,7 +335,9 @@ Kotlin factory functions:
     * in Kotlin works on Interfaces - [CompanionObjectFactoryFun.kt](src/codedesign/objectcreation/item33/CompanionObjectFactoryFun.kt)
     * companion objects can implement interfaces and extend classes (unlike static methods in Java) - [AnimalFactory.kt](src/codedesign/objectcreation/item33/AnimalFactory.kt)
 2. Extension factory function
+    * [ExtensionFactoryFunction.kt](src/codedesign/objectcreation/item33/ExtensionFactoryFunction.kt)
 3. Top-level factory functions
+    * 
 4. Fake constructors
 5. Methods on a factory classes
 ### Class Design Item 36 - 44
