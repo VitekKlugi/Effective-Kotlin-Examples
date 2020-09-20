@@ -309,7 +309,7 @@ Different kinds of abstractions give us freedom by protecting us from a variety 
 * If you are forced to break them, **document** this fact well!    
         
 ### Object creation Item 33 - 35
-### Item 33: Consider factory functions instead of constructors
+#### Item 33: Consider factory functions instead of constructors
 Factory functions (alternative to constructors):
 * unlike constructors, functions have names
 * unlike constructors, functions can return an object of any subtype of their return type
@@ -328,7 +328,7 @@ Factory functions are not a competition to the primary constructor!
 
 Kotlin factory functions:
 1. Companion object factory function
-    * Similar to Named Constructor Idiom (C++)
+    * similar to Named Constructor Idiom (C++)
     * ```MyLinkedList.of(1, 2)```
     * name of the function is not really descriptive
         * should follow conventions that come from Java
@@ -337,9 +337,40 @@ Kotlin factory functions:
 2. Extension factory function
     * [ExtensionFactoryFunction.kt](src/codedesign/objectcreation/item33/ExtensionFactoryFunction.kt)
 3. Top-level factory functions
-    * 
-4. Fake constructors
+    * example ```listOf()```
+    * more readable than ```List.of()```
+    * available everywhere
+        * it is easy to clutter up the developer’s IDE tips
+        * should be named wisely
+4. Fake constructor
+    * constructors in Kotlin are used the same way as top-level functions
+        * they are referenced the same as top-level functions (and constructor reference implements function interface):
+            * ```val reference: ()->A = ::A```
+            * by convention - capitalization is the only distinction between constructors and functions
+    * reasons why we might want to use them:
+        * to have “constructor” for an interface
+        * to have reified type arguments
+        * example [FakeConstructor.kt](src/codedesign/objectcreation/item33/FakeConstructor.kt)
 5. Methods on a factory classes
+    * many creational patterns associated with factory classes exists, for instance:
+        * abstract factory
+        * prototype
+    * some of them not reasonable in Kotlin like Builder
+    * advantage over factory functions - can have a state
+        * caching or speed up object creation by duplicating previously created objects
+    * [StudentsFactory.kt](src/codedesign/objectcreation/item33/StudentsFactory.kt)
+#### Item 34: Consider a primary constructor with named optional arguments
+
+    
+##### Summary
+* Kotlin offers a variety of ways to specify factory functions and they all have their own use
+* we should have them in mind when we design object creation
+* each of them is reasonable for different cases
+* some of them should preferably be used with caution:
+    * Fake Constructors
+    * Top-Level Factory Method
+    * Extension Factory Function
+    
 ### Class Design Item 36 - 44
 
 ## Efficiency
