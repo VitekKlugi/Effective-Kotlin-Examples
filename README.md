@@ -410,6 +410,41 @@ Java patterns related to the use of constructors:
         * when we design API to be easily used in other languages that do not support default arguments or DSLs
         * we rather prefer either a primary constructor with default arguments, or an expressive DSL
 * **Summary:** creating objects using a primary constructor is the most appropriate approach for the vast majority of objects in our projects
+#### Item 35: Consider defining a DSL for complex object creation
+* Kotlin DSL is useful when we need to define more complex objects or a hierarchical structure of objects
+    * Kotlin DSL is popular:
+        * express HTML: both classic HTML, and React HTML
+        * views, eg. Android Anko, TornadoFX (built on top of the JavaFX)
+        * API definition in Ktor
+        * test frameworks, e.g. Kotlin Test
+        * gradle configuration
+    * It is type safe unlike Groovy
+* Defining your own DSL (it's good to understand how DSLs are constructed to be able to effectively use them)
+    * Based on [Kotlin DSL Tutorial](https://www.ximedes.com/2020-04-21/kotlin-dsl-tutorial/)
+    * Step 1 - basics:
+        * extension function
+        * passing extension function to another function
+        * [MutablePersonDsl.kt](src/codedesign/objectcreation/item35/MutablePersonDsl.kt)
+    * Step 2 - Mutability
+        * use builder pattern
+        * [SimplePersonDsl.kt](src/codedesign/objectcreation/item35/SimplePersonDsl.kt)
+    * Step 3 - Nesting
+        * add greeting function into the PersonBuilder which inits a Greeting using Greeting builder
+        * add fancy infix function to for specific greetings
+        * use @DlsMarker to limit implicit access to outer scope receiver (see also Item 15)
+        * [PersonDsl.kt](src/codedesign/objectcreation/item35/PersonDsl.kt)
+* **Summary**
+    * DSLs are an overkill when we can use other, simpler features instead
+        * DSL implementations might be confusing or hard for new developers
+        * they are also hard to define
+        * they should be only used when they offer real value
+    * DSLs are about boilerplate elimination
+        * everything can be expressed without DSL-like structure, by using builders or just constructors instead
+    * They are really useful when we need to express:
+        * complicated data structures
+        * hierarchical structures,
+        * huge amount of data
+     
 ### Class Design Item 36 - 44
 
 ## Efficiency
