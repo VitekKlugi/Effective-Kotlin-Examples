@@ -358,10 +358,7 @@ Kotlin factory functions:
     * some of them not reasonable in Kotlin like Builder
     * advantage over factory functions - can have a state
         * caching or speed up object creation by duplicating previously created objects
-    * [StudentsFactory.kt](src/codedesign/objectcreation/item33/StudentsFactory.kt)
-#### Item 34: Consider a primary constructor with named optional arguments
-
-    
+    * [StudentsFactory.kt](src/codedesign/objectcreation/item33/StudentsFactory.kt) 
 ##### Summary
 * Kotlin offers a variety of ways to specify factory functions and they all have their own use
 * we should have them in mind when we design object creation
@@ -370,7 +367,49 @@ Kotlin factory functions:
     * Fake Constructors
     * Top-Level Factory Method
     * Extension Factory Function
-    
+#### Item 34: Consider a primary constructor with named optional arguments
+Java patterns related to the use of constructors:
+* the telescoping constructor 
+    * constructors with default arguments surpass the telescoping constructor pattern
+    * [PizzaConstuctorWithDefaultParams.kt](src/codedesign/objectcreation/item34/PizzaConstuctorWithDefaultParams.kt)
+* the builder pattern
+    * Java developers mainly use the builder pattern, because it allows them to:
+        * name parameters
+        * specify parameters in any order
+        * have default values
+    * Builder can require a set of values for a name
+        ```
+        val router = Router.Builder()
+            .addRoute(path = "/home", ::showHome)
+            .addRoute(path = "/users", ::showUsers)
+            .build()
+        ```
+      * to achieve similar behavior with a constructor:
+      ```
+      val router = Router(
+          routes = listOf(
+              Route("/home", ::showHome),
+              Route("/users", ::showUsers)
+          )
+      )
+      ```
+      * in such cases we tend to prefer DSL (even though making a DSL is harder)
+      ```
+      val route = router {
+        "/home" directsTo ::showHome
+        "/users" directsTo ::showUsers
+      }
+      ```
+    * another advantage of the classic builder pattern is that it can be used as a factory
+        * filled partially and passed further, eg. default dialog etc.
+        * to have a similar possibility in a constructor or factory method, we would need currying, which is not (out of the box) supported in Kotlin
+        * alternatively we could keep object configuration in a **data class** and use **copy** to modify an existing one
+        * we can create it using a function and pass all customization elements as optional arguments
+    * the builder pattern is rarely the best option in Kotlin. It is sometimes chosen:
+        * to make code consistent with libraries written in other languages that used builder pattern
+        * when we design API to be easily used in other languages that do not support default arguments or DSLs
+        * we rather prefer either a primary constructor with default arguments, or an expressive DSL
+* **Summary:** creating objects using a primary constructor is the most appropriate approach for the vast majority of objects in our projects
 ### Class Design Item 36 - 44
 
 ## Efficiency
