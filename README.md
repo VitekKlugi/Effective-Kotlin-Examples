@@ -494,7 +494,32 @@ To prevent developers from extending classes that are not designed for an inheri
 * inheritance gives us a strong polymorphic behavior
     * this is a double-edged sword
     * it's comfortable but also very constraining
-    
+
+#### Item 37: Use the data modifier to represent a bundle of data
+When we use **data** modifier, Kotlin generates:
+* toString
+* equals and hashCode
+* copy
+    * shallow copy
+    * especially useful for immutable data classes
+        * for immutable objects we do not need deep copies
+* componentN (component1, component2, etc.) - position based destructuring useful but dangerous:
+    * we need to adjust every destructuring when the order of elements in data class change
+    * it is also easy to destructure incorrectly by confusing order
+        * [DataClassDestructing](src/codedesign/classdesign/item37/DataClassDestructing.kt)
+    * confusing and misleading for a reader
+        * do not destructure to get just the first value
+            * especially when you destructure in lambda expressions [DestructingInLambda.kt](src/codedesign/classdesign/item37/DestructingInLambda.kt)
+        
+Prefer data classes instead of tuples
+* kotlin tuples are just generic data classes which are Serializable and have a custom toString method
+* using data classes is nearly always better
+* Pair and Triple - last tuples that are left in Kotlin
+    * they stayed because they are used for local purposes - [LocalUseOfTuples.kt](src/codedesign/classdesign/item37/LocalUseOfTuples.kt)
+        * when we immediately name values
+        * to represent an aggregate not known in advance — as is commonly found in standard library functions
+        * in other cases, we prefer data classes [DataClassBetterThanTuple.kt](src/codedesign/classdesign/item37/DataClassBetterThanTuple.kt)
+        
 ## Efficiency
 ### Make it cheap Item 45 - 48
 ### Efficinet collection processing Item 49 - 52 
