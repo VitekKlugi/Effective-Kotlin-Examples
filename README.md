@@ -531,7 +531,12 @@ Function types are preferred over SAMs:
 * [FunctionTypeParameter](src/codedesign/classdesign/item38/FunctionTypeParameter.kt)
 * The only exception is when we design a class to be used from JAVA
     * [KotlinView.kt](src/codedesign/classdesign/item38/KotlinView.kt)
-        
+
+#### Item 39: Prefer class hierarchies to tagged classes
+Tagged class - class with a constant “mode” that specifies how the class should behave
+* [ValueMatcherTagged.kt](src/codedesign/classdesign/item39/ValueMatcherTagged.kt)
+* ValueMatcher as a class hierarchy - [ValueMatcher.kt](src/codedesign/classdesign/item39/ValueMatcher.kt)
+ 
 ## Efficiency
 ### Make it cheap Item 45 - 48
 ### Efficinet collection processing Item 49 - 52 
