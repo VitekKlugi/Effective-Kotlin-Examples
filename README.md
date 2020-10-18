@@ -520,6 +520,18 @@ Prefer data classes instead of tuples
         * to represent an aggregate not known in advance — as is commonly found in standard library functions
         * in other cases, we prefer data classes [DataClassBetterThanTuple.kt](src/codedesign/classdesign/item37/DataClassBetterThanTuple.kt)
         
+#### Item 38: Use function types instead of interfaces to pass operations and actions
+SAM (Single-Abstract Method)
+```
+interface OnClick {
+    fun clicked(view: View)
+}
+```
+Function types are preferred over SAMs:
+* [FunctionTypeParameter](src/codedesign/classdesign/item38/FunctionTypeParameter.kt)
+* The only exception is when we design a class to be used from JAVA
+    * [KotlinView.kt](src/codedesign/classdesign/item38/KotlinView.kt)
+        
 ## Efficiency
 ### Make it cheap Item 45 - 48
 ### Efficinet collection processing Item 49 - 52 
