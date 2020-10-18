@@ -536,7 +536,55 @@ Function types are preferred over SAMs:
 Tagged class - class with a constant “mode” that specifies how the class should behave
 * [ValueMatcherTagged.kt](src/codedesign/classdesign/item39/ValueMatcherTagged.kt)
 * ValueMatcher as a class hierarchy - [ValueMatcher.kt](src/codedesign/classdesign/item39/ValueMatcher.kt)
+* State Pattern can be also implemented this way
  
-## Efficiency
+#### Item 40: Respect the contract of equals
+Two types of equality:
+* Structural equality - checked by the equals method or == operator
+* Referential equality - checked by the === operator
+
+We rarely need to implement equality ourselves in Kotlin
+* default (implemented in Any)
+* data class equality
+
+We implement equals ourselves when:
+* we need its logic to differ from the default one
+* we need to compare only a subset of properties
+* we do not want our object to be a data class or properties we need to compare are not in the primary constructor
+
+We must fulfill contract of equals (same as in Java):
+* **Reflexive**: for any non-null value x, x.equals(x) should return true.
+* **Symmetric**: for any non-null values x and y, x.equals(y) should return true if and only if y.equals(x) returns true.
+* **Transitive**: for any non-null values x, y, and z, if x.equals(y) returns true and y.equals(z) returns true, then x.equals(z) should return true.
+* **Consistent**: for any non-null values x and y, multiple invocations of x.equals(y) consistently return true or consistently return false, provided no information used in equals comparisons on the objects is modified.
+* **Never equal to null**: for any non-null value x, x.equals(null) should return false.
+
+#### Item 41: Respect the contract of hashCode
+We define hashCode in Kotlin practically only when we define custom equals.
+We must fulfill formal contract and have a good hash function.
+HashCode contract:
+* Consistent: Whenever it is invoked on the same object more than once, the hashCode method must consistently return the same integer, provided no information used in equals comparisons on the object is modified.
+* Consistent with equals: If two objects are equal according to the equals method, then calling the hashCode method on each of the two objects must produce the same integer result.
+
+#### Item 42: Respect the contract of compareTo
+compareTo
+* is an operator in Kotlin that translates into the mathematical inequality signs >, <, >=, <=
+* it is also located in the ```Comparable<T>``` interface
+
+compareTo contract:
+* **Antisymmetric**, meaning that if a >= b and b >= a then a == b. Therefore there is a relation between comparison and equality and they need to be consistent with each other.
+* **Transitive**, meaning that if a >= b and b >= c then a >= c. Similarly when a > b and b > c then a > c. This property is important because without it, sorting of elements might take literally forever in some sorting algorithms.
+* **Connex**, meaning that there must be a relationship between every two elements. So either a >= b, or b >= a. In Kotlin, it is guaranteed by typing system for compareTo because it returns Int, and every Int is either positive, negative or zero. This property is important because if there is no relationship between two elements, we cannot use classic sorting algorithms like quicksort or insertion sort. Instead, we need to use one of the special algorithms for partial orders, like topological sorting.
+
+In Kotlin we rarely implement compareTo ourselves.
+* we get more freedom by specifying the order on a case by case basis than by assuming one global natural order
+    * [SortingBy.kt](src/codedesign/classdesign/item42/SortingBy.kt)
+* when we do need to implement compareTo ourselves, we have toplevel functions (compareValues, compareValuesBy) that can help us:
+    * [ComparableUser.kt](src/codedesign/classdesign/item42/ComparableUser.kt)
+    
+#### Item 43: Consider extracting non-essential parts of your API into extensions
+#### Item 44: Avoid member extensions
+  
+## Part 3: Efficiency
 ### Make it cheap Item 45 - 48
 ### Efficinet collection processing Item 49 - 52 
