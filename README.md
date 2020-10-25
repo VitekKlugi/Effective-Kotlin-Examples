@@ -583,6 +583,25 @@ In Kotlin we rarely implement compareTo ourselves.
     * [ComparableUser.kt](src/codedesign/classdesign/item42/ComparableUser.kt)
     
 #### Item 43: Consider extracting non-essential parts of your API into extensions
+Member vs. extension function
+* extensions need to be imported separately - they can be located in a different package
+    * we can have many extensions with the same name on the same type
+* the compiler always chooses member functions over extensions
+    * the only exception is when an extension in the Kotlin stdlib has kotlin.internal.HidesMembers internal annotation
+* extensions are not virtual
+    * the extension function to call is selected statically during compilation
+    * we should not use extensions for elements that  are designed for inheritance
+    * [ExtensionsAreNotVirtual.kt](src/codedesign/classdesign/item43/ExtensionsAreNotVirtual.kt)
+    * we define extensions on types, not on classes
+        * extension on a nullable or a concrete substitution of a generic type
+            * [ExtensionOnNullableAndConcreteSubstitution.kt](src/codedesign/classdesign/item43/ExtensionOnNullableAndConcreteSubstitution.kt)
+* extensions are not listed as members in the class reference
+
+**Summary**:
+* extensions give us more freedom and flexibility. They are more noncommittal
+* they do not support inheritance, annotation processing, and it might be confusing that they are not present in the class
+* essential parts of our API should rather stay as members
+* there are good reasons to extract non-essential parts of your API as extensions
 #### Item 44: Avoid member extensions
   
 ## Part 3: Efficiency
