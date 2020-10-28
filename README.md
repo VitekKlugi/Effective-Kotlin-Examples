@@ -581,7 +581,6 @@ In Kotlin we rarely implement compareTo ourselves.
     * [SortingBy.kt](src/codedesign/classdesign/item42/SortingBy.kt)
 * when we do need to implement compareTo ourselves, we have toplevel functions (compareValues, compareValuesBy) that can help us:
     * [ComparableUser.kt](src/codedesign/classdesign/item42/ComparableUser.kt)
-    
 #### Item 43: Consider extracting non-essential parts of your API into extensions
 Member vs. extension function
 * extensions need to be imported separately - they can be located in a different package
@@ -603,6 +602,16 @@ Member vs. extension function
 * essential parts of our API should rather stay as members
 * there are good reasons to extract non-essential parts of your API as extensions
 #### Item 44: Avoid member extensions
+Even though it is possible, there are good reasons to avoid defining member extensions (except for DSLs).
+
+We prefer to avoid member extensions:
+* especially, do not define extension as members just to restrict visibility
+* reference is not supported
+    * [MemberExtensions.kt](src/codedesign/classdesign/item44/MemberExtensions.kt)
+* implicit access to both receivers might be confusing
+    * it is not clear if we modify the extension
+    * or dispatch receiver (the class in which the extension is defined)
+    * [ConfusingMemberExtensions.kt](src/codedesign/classdesign/item44/ConfusingMemberExtensions.kt)
   
 ## Part 3: Efficiency
 ### Make it cheap Item 45 - 48
