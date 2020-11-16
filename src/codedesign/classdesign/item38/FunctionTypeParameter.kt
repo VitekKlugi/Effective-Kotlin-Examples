@@ -1,7 +1,7 @@
 package codedesign.classdesign.item38
 
 // typealias StringOutput = (String) -> Unit
-fun runStringAction(action: (String) -> Unit) {
+inline fun runStringAction(action: (String) -> Unit) {
     action("Hello!")
 }
 
