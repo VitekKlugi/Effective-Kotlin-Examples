@@ -612,7 +612,17 @@ We prefer to avoid member extensions:
     * it is not clear if we modify the extension
     * or dispatch receiver (the class in which the extension is defined)
     * [ConfusingMemberExtensions.kt](src/codedesign/classdesign/item44/ConfusingMemberExtensions.kt)
-  
 ## Part 3: Efficiency
 ### Make it cheap Item 45 - 48
-### Efficinet collection processing Item 49 - 52 
+#### Item 45: Avoid unnecessary object creation
+Wrapping something into an object has 3 parts of cost:
+* objects take additional space
+    * 64-bit JDK - 16 bytes header + 8 bytes reference to a object (above -Xmx32G)
+    * int primitive fits in 4 bytes
+* access requires an additional function call when elements are encapsulated
+* objects need to be created
+
+Limit the number of unnecessary objects in the code:
+* Object declaration - [ObjectDeclaration.kt](src/efficiency/makeitcheap/item45/ObjectDeclaration.kt)
+* Factory function with a cache - 
+### Efficient collection processing Item 49 - 52 
