@@ -521,7 +521,7 @@ Prefer data classes instead of tuples
         * in other cases, we prefer data classes [DataClassBetterThanTuple.kt](src/codedesign/classdesign/item37/DataClassBetterThanTuple.kt)
         
 #### Item 38: Use function types instead of interfaces to pass operations and actions
-SAM (Single-Abstract Method)
+SAM (Single Abstract Method)
 ```
 interface OnClick {
     fun clicked(view: View)
@@ -590,7 +590,7 @@ Member vs. extension function
 * extensions are not virtual
     * the extension function to call is selected statically during compilation
     * we should not use extensions for elements that  are designed for inheritance
-    * [ExtensionsAreNotVirtual.kt](src/codedesign/classdesign/item43/ExtensionsAreNotVirtual.kt)
+        * [ExtensionsAreNotVirtual.kt](src/codedesign/classdesign/item43/ExtensionsAreNotVirtual.kt)
     * we define extensions on types, not on classes
         * extension on a nullable or a concrete substitution of a generic type
             * [ExtensionOnNullableAndConcreteSubstitution.kt](src/codedesign/classdesign/item43/ExtensionOnNullableAndConcreteSubstitution.kt)
