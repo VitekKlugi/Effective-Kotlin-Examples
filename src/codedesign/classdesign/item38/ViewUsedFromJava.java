@@ -7,5 +7,6 @@ public class ViewUsedFromJava {
         KotlinView view = new KotlinView();
         view.setOnSomethingSelected(str -> Unit.INSTANCE); // we must explicitly return UNIT type
         view.setOnSomethingClicked(str -> {});
+        view.setOnClicked(str -> {});
     }
 }

@@ -523,14 +523,21 @@ Prefer data classes instead of tuples
 #### Item 38: Use function types instead of interfaces to pass operations and actions
 SAM (Single Abstract Method)
 ```
+fun // since Kotlin 1.4
 interface OnClick {
     fun clicked(view: View)
 }
 ```
-Function types are preferred over SAMs:
+Prior to Kotlin 1.4 - function types were preferred over SAMs:
 * [FunctionTypeParameter](src/codedesign/classdesign/item38/FunctionTypeParameter.kt)
-* The only exception is when we design a class to be used from JAVA
+* The only exception was when we design a class to be used from JAVA
     * [KotlinView.kt](src/codedesign/classdesign/item38/KotlinView.kt)
+* Since Kotlin 1.4. - SAMs are supported in Kotlin see [Functional (SAM) interfaces](https://kotlinlang.org/docs/reference/fun-interfaces.html)
+    * ```fun interface``` keyword ensures there is only single abstract method (SAM)
+        * but can have mutliple non-abstract members
+        * can also implement and extend other interfaces
+    * [SamParameter.kt](src/codedesign/classdesign/item38/SamParameter.kt)
+    * implementation issue [KT-7770](https://youtrack.jetbrains.com/issue/KT-7770)
 
 #### Item 39: Prefer class hierarchies to tagged classes
 Tagged class - class with a constant “mode” that specifies how the class should behave
