@@ -630,6 +630,22 @@ Wrapping something into an object has 3 parts of cost:
 * objects need to be created
 
 Limit the number of unnecessary objects in the code:
-* Object declaration - [ObjectDeclaration.kt](src/efficiency/makeitcheap/item45/ObjectDeclaration.kt)
-* Factory function with a cache - 
-### Efficient collection processing Item 49 - 52 
+* Object declaration (singleton) - [ObjectDeclaration.kt](src/efficiency/makeitcheap/item45/ObjectDeclaration.kt)
+* Factory function with a cache - [FibWithCache.kt](src/efficiency/makeitcheap/item45/FibWithCache.kt)
+    * Weak references do not prevent Garbage Collector from cleaning-up the value. So once no other reference (variable) is using it, the value will be cleaned.
+    * Soft references are not guaranteeing that the value won’t be cleaned up by the GC either, but in most JVM implementations, this value won’t be cleaned unless memory is needed. Soft references are perfect when we implement a cache.
+* Heavy object lifting
+    * useful trick is to lift a heavy object to an outer scope [HeavyObjectLifting.kt](src/efficiency/makeitcheap/item45/HeavyObjectLifting.kt)
+* Lazy initialization
+    * ```by lazy```
+    * cost of object creation can be spread instead of accumulated
+* Using primitives
+    * primitives are used by Kotlin/JVM compiler under the hood wherever possible
+        * wrapped class needs to be used instead, eg.:
+            * when we operate on a nullable type (primitives cannot be null)
+            * when we use the type as a generic
+    * make sense ***for performance critical parts of our code and in libraries***
+    * may lead to less readable code
+    * [MaxOrNull.kt](src/efficiency/makeitcheap/item45/MaxOrNull.kt)
+
+### Efficient collection processing Item 49 - 52
