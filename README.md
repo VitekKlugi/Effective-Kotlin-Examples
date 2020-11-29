@@ -679,5 +679,13 @@ The main cases where we use inline functions are:
 * Functions that need to have a reified type passed as a type argument, like filterIsInstance.
 * When we define top-level functions with parameters of functional types.
 #### Item 47: Consider using inline classes
+Class with a single primary constructor property can be inlined
+    * [InlineClass.kt](src/efficiency/makeitcheap/item47/InlineClass.kt)
+    * can be userd as a value wrapper with no performance penalty
+
+Two especially popular uses of inline classes are:
+* to indicate a unit of measure
+    * [Timer.kt](src/efficiency/makeitcheap/item47/Timer.kt)
+* to use types to protect user from misuse
 
 ### Efficient collection processing Item 49 - 52
