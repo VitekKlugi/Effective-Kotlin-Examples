@@ -647,5 +647,37 @@ Limit the number of unnecessary objects in the code:
     * make sense ***for performance critical parts of our code and in libraries***
     * may lead to less readable code
     * [MaxOrNull.kt](src/efficiency/makeitcheap/item45/MaxOrNull.kt)
+#### Item 46: Use inline modifier for functions with parameters of functional types
+* nearly all Kotlin stdlib higher-order functions have an inline modifier - why?
+    * type argument can be reified
+        * generic types are erased during compilation (missing in runtime)
+            * We can overcome this limitation by making a function inline. Function calls are replaced with its body, so type parameters uses can be replaced with type arguments, by using the reified modifier
+    * functions with functional parameters are faster when they are inline
+        * don't create object for the function (Kotlin don't use invokedynamic for lambdas Java8+ Kotlin is compatible with Java 6)
+    * non-local return is allowed for inline functions
+    ```
+    fun main() {
+        repeat(10) {
+            print(it)
+            return // OK
+        }
+    }
+  ```
+ 
+**Costs of inline modifier**
+* inline functions cannot be recursive
+* inline functions cannot use elements with more restrictive visibility
+* having too many inline functions calling each other is dangerous because our code might start growing exponentially.
+
+**crossinline and noinline**
+* crossinline - it means that the function should be inlined but non-local return is not allowed. We use it when this function is used in another scope where non-local return is not allowed, for instance in another lambda that is not inlined.
+* noinline - it means that this argument should not be inlined at all. It is used mainly when we use this function as an argument to another function that is not inlined.
+
+**Summary:**
+The main cases where we use inline functions are:
+* Very often used functions, like print.
+* Functions that need to have a reified type passed as a type argument, like filterIsInstance.
+* When we define top-level functions with parameters of functional types.
+#### Item 47: Consider using inline classes
 
 ### Efficient collection processing Item 49 - 52
