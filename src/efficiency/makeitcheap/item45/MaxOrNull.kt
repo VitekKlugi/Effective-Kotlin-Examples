@@ -1,6 +1,6 @@
 package efficiency.makeitcheap.item45
 
-import kotlin.system.measureNanoTime
+import kotlin.system.measureTimeMillis
 
 fun Iterable<Int>.maxOrNullCustom(): Int? {
     var max: Int? = null // 2. We use a nullable value, so under the hood in JVM, there will be an Integer instead of an int
@@ -12,10 +12,9 @@ fun Iterable<Int>.maxOrNullCustom(): Int? {
 
 fun main() {
     val bigList: List<Int> = (0..100000).toList()
-    val customTime = measureNanoTime { bigList.maxOrNullCustom() }
-    val stdTime = measureNanoTime { bigList.maxOrNull() }
+    val customTime = measureTimeMillis { bigList.maxOrNullCustom() }
+    val stdTime = measureTimeMillis { bigList.maxOrNull() }
 
-    println("MaxOrNullCustom time: $customTime (ns)")
-    println("MaxOrNull time: $stdTime (ns)")
-    println("Std is ${customTime - stdTime} (ns) faster.")
+    println("MaxOrNullCustom time: $customTime (ms)")
+    println("MaxOrNull time: $stdTime (ms)")
 }
