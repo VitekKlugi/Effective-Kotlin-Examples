@@ -5,6 +5,14 @@ package efficiency.makeitcheap.item47
 //}
 //
 //inline class Millis(val milliseconds: Int)
+//
+//inline val Int.min
+//    get() = Minutes(this)
+//
+//inline val Int.ms
+//    get() = Millis(this)
+//
+//val hour = 60.min
 
 interface User {
     fun decideAboutTime(): Int // Minutes
@@ -21,3 +29,4 @@ fun setUpUserWakeUpUser(user: User, timer: Timer) {
         user.wakeUp()
     }
 }
+

@@ -681,11 +681,30 @@ The main cases where we use inline functions are:
 #### Item 47: Consider using inline classes
 Class with a single primary constructor property can be inlined
     * [InlineClass.kt](src/efficiency/makeitcheap/item47/InlineClass.kt)
-    * can be userd as a value wrapper with no performance penalty
+    * can be used as a value wrapper with no performance penalty
 
 Two especially popular uses of inline classes are:
 * to indicate a unit of measure
     * [Timer.kt](src/efficiency/makeitcheap/item47/Timer.kt)
 * to use types to protect user from misuse
+    * [GradesEntity.kt](src/efficiency/makeitcheap/item47/GradesEntity.kt)
+    
+Inline classes and interfaces
+* inline classes just like other classes can implement interfaces
+* when we present inline classes through an interface, such classes are **not inlined**
 
+Typealias
+* used especially when we deal with long and repeatable types, eg. function types
+* typealiases do not protect us in any way from type misuse
+#### Item 48: Eliminate obsolete object references
+There are a few common sources of memory leaks
+* the most important way to avoid cluttering our memory is having variables defined in a local scope (Item 2: Minimize the scope of variables)
+    * and not storing possibly heavy data in top-level properties or object declarations (including companion objects)
+        * eg. Activity on Android
+* caches hold objects that might never be used
+    * use **soft references**
+* some objects can be referenced using **weak reference**. For instance a Dialog on a screen
+* need to free objects manually is pretty rare
+    * although, it is good to set null to unused objects when it doesn’t cost you much to do it
+        * eg. famous Bloch's Stack example, or **SynchronizedLazyImpl** from Kotlin stdlib     
 ### Efficient collection processing Item 49 - 52
