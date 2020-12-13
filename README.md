@@ -724,3 +724,7 @@ What's the difference between Iterable and Sequence?
             * sequence must be first accumulated into List and then uses sort from Java
 * Java 8 streams - have parallel mode, could be faster but there are [known pitfalls](https://dzone.com/articles/think-twice-using-java-8).
 * Kotlin Sequence Debugger
+#### Item 50: Limit the number of operations
+* every collection processing method is a cost
+    * we mainly limit the number of collection processing steps by using operations that are composites
+        * []()
