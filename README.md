@@ -726,5 +726,13 @@ What's the difference between Iterable and Sequence?
 * Kotlin Sequence Debugger
 #### Item 50: Limit the number of operations
 * every collection processing method is a cost
+    * most collection processing steps require iteration over the whole collection and intermediate collection creation
     * we mainly limit the number of collection processing steps by using operations that are composites
-        * []()
+        * [CompositeOperations.kt](src/efficiency/collectionprocessing/item50/CompositeOperations.kt)
+#### Item 51: Consider Arrays with primitives for performance-critical processing
+* In a typical case, List or Set should be preferred over Array.
+* Though if you hold big collections of primitives, using Array with primitives (eg. ```IntArray```) might significantly improve your performance and memory use.
+#### Item 52: Consider using mutable collections
+* The biggest advantage of using mutable collections instead of immutable is that they are faster in terms of performance
+* When we add an element to an immutable collection, we need to create a new collection and add all elements to it
+    * [MapImplementation.kt](src/efficiency/collectionprocessing/item52/MapImplementation.kt)
