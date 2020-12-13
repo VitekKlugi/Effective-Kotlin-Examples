@@ -708,3 +708,19 @@ There are a few common sources of memory leaks
     * although, it is good to set null to unused objects when it doesn’t cost you much to do it
         * eg. famous Bloch's Stack example, or **SynchronizedLazyImpl** from Kotlin stdlib     
 ### Efficient collection processing Item 49 - 52
+#### Item 49: Prefer Sequence for big collections with more than one processing step
+What's the difference between Iterable and Sequence?
+* In sequence processing, we take the first element and apply all the operations, then we take the next element, and so on
+    * element-by-element or lazy order
+* In iterable processing, we take the first operation and we apply it to the whole collection, then move to the next operation, etc..
+    * step-by-step or eager order
+* Sequences are lazy!
+    * they keep the natural order of operations - [SequenceVsIterable.kt](src/efficiency/collectionprocessing/item49/SequenceVsIterable.kt)
+    * they do a minimal number of operations - [NumberOfOperations.kt](src/efficiency/collectionprocessing/item49/NumberOfOperations.kt)
+    * they can be infinite - [SequenceGenerators.kt](src/efficiency/collectionprocessing/item49/SequenceGenerators.kt)
+    * they do not need to create collections at every step
+        * we should prefer to use Sequence for big collections with more than one processing step
+        * sorted - example where list is faster - because we have to operate on the whole collection either way
+            * sequence must be first accumulated into List and then uses sort from Java
+* Java 8 streams - have parallel mode, could be faster but there are [known pitfalls](https://dzone.com/articles/think-twice-using-java-8).
+* Kotlin Sequence Debugger
